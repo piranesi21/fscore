@@ -79,6 +79,18 @@
 
 	$('a.sitebutton[href^="#"]').addClass("emptylink");
 
+	// background
+
+	$(window).scroll(function() {
+		var scroll = $(window).scrollTop(),
+			wh = $(window).height();
+
+		if (scroll >= (wh - 120)) {
+			$('#sticky-background').addClass('Aboutout');
+		} else {
+			$('#sticky-background').removeClass('Aboutout');
+	}})
+
 })(jQuery);
 
 	// Mobile Header
@@ -97,3 +109,17 @@
 				$('input').toggleClass('clickbutton');
 			};}
 	});
+
+	// vh checker
+
+	let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    window.addEventListener('resize', () => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+    window.addEventListener('touchend', () => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });

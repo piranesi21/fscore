@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Barlow:200,400,500,700|Josefin+Sans:wght@200;700|Zen+Kaku+Gothic+Antique:300,500,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Barlow:200,400,500,600,700|Josefin+Sans:wght@200;700|Zen+Kaku+Gothic+Antique:300,500,700&display=swap);
 
 /* Reset */
 
@@ -80,7 +80,7 @@ html {
 }
 
 body {
-    background: #00B9E7;
+    background: #FFE100;
 }
 
 a,
@@ -101,7 +101,7 @@ a:before {
 loading {
     position: fixed;
     display: block;
-    background: #19102d;
+    background: #00b9e7;
     top: 0;
     left: 0;
     height: 100%;
@@ -118,6 +118,7 @@ loading {
     width: 40vmin;
     height: auto;
     transition: transform 0.5s ease;
+    filter: invert(2);
 }
 
 .mobile{
@@ -131,13 +132,13 @@ loading {
 
 .hypereffect:before {
     left: 0;
-    top: 4.6em;
+    top: 4.7em;
     width: calc(100% - 1.8em);
     background: #000;
     height: 1px;
 
     transform: translateX(-105%);
-    transition: transform 0.3s ease-out, top 0.5s linear, height 0.5s linear;
+    transition: transform 0.3s ease-out, top 0.1s linear, height 0.5s linear;
 }
 
 .hypereffect:hover:before {
@@ -146,21 +147,30 @@ loading {
 }
 
 .outbanner-effect:before {
-    top: 3em !important;
+    top: 3.1em !important;
     height: 0.5px !important;
 }
 
 title {
-    display: inline-block;
+    display: flex;
+    flex-flow: row;
     font-family: 'Josefin Sans';
     letter-spacing: 0.3em;
     margin-left: 0.3em;
     font-weight: 700;
-    color: #FFE100;
+    color: #fff;
     font-size: 4vmin;
     width: 70vw;
-    margin: max(10vh, 20pt) auto;
+    margin: 0 0 max(10vh, 20pt) 0;
 }
+
+title::after {
+    content: "";
+    flex: 1;
+    border-bottom: 0.5vmin solid #fff;
+    margin: auto 0 auto 1em;
+}
+
 
 /* Header */
 
@@ -169,10 +179,10 @@ header {
     height: 13vh;
 	top: 0;
     width: 100%;
-    font-size: 1.5vh;
+    font-size: 1.75vh;
     line-height: 8em;
     z-index: 10000;
-    background-color: none;
+    background: none;
 
     user-select: none;
     transition: 0.5s linear;
@@ -181,7 +191,7 @@ header {
 }
 
 .outbanner-header {
-    background-color: linear-gradient(to bottom, #fff, rgba(0,0,0,0));
+    background: linear-gradient(to bottom, #fff, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0));
     height: 10vh;
     line-height: 5em;
 }
@@ -256,16 +266,18 @@ input {
 /* Banner */
 
 #banner {
-    position: absolute;
+    position: fixed;
     background: #fff url(images/background.jpg) no-repeat;
     background-position: left bottom;
     background-size: auto 100%;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     top: 0;
     left: 0;
     text-align: left;
     font-size: 1vmax;
+    z-index: -10;
 
     -webkit-touch-callout: none;
     user-select: none;
@@ -281,6 +293,7 @@ input {
     height: auto;
     top: 47%;
     right: calc(3.5rem + 2.7vh);
+    right: calc(3.5rem + calc(var(--vh, 1vh) * 2.7));
     transform: translateY(-50%);
 }
 
@@ -290,25 +303,31 @@ input {
     width: 15em;
     height: auto;
     bottom: calc(3.5rem + 2.7vh);
+    bottom: calc(3.5rem + calc(var(--vh, 1vh) * 2.7));
     right: calc(3.5rem + 2.7vh);
+    right: calc(3.5rem + calc(var(--vh, 1vh) * 2.7));
 }
-
 
 /* About */
 
 #about {
     display: inline-block;
-    background: linear-gradient(to bottom, #fff, rgba(256,256,256,0));
+    background: url(images/background-about.png) no-repeat right center;
+    background-attachment: fixed;
+    background-size: cover;
     list-style-type: none;
-    padding: 25vh 15vw 0 15vw;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    padding: 25vh 5vw 25vh 5vw;
     width: 100%;
     text-align: center;
     margin-top: 100vh;
+    margin-top: calc(var(--vh, 1vh) * 100);
 }
 
 #about .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -331,23 +350,28 @@ input {
     width: auto;
     display: inline-block;
     bottom: 14pt;
-    color: #fff;
+    color: #000;
     font-family: 'Barlow','ZEN KAKU GOTHIC ANTIQUE';
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     line-height: 1.3em;
-    font-size: 0.9vw;
-    letter-spacing: 0.05em;
-    word-break: keep-all;
+    font-size: 1.2vw;
+    letter-spacing: 0;
+    word-break: break-all;
     overflow-wrap: break-word;
     text-align: left;
+}
+
+#about h2 p {
+    display: inline;
+    background-color: #fff;
 }
 
 .video {
     position: relative;
     display: block;
-    width: 40vw;
-    height: calc(40vw/1.777777777);
+    width: 55vw;
+    height: calc(55vw/1.777777777);
     z-index: 1;
 }
 
@@ -359,13 +383,33 @@ iframe {
     height: 100%;
 }
 
+#sticky-background {
+    display: none;
+    position: sticky;
+    background: url(images/sticky-background.jpg) no-repeat;
+    background-size: 100vw auto;
+    background-position: center bottom;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 200vh;
+    height: calc(var(--vh, 1vh) * 200);
+    margin-top: -300vh;
+    margin-top: calc(var(--vh, 1vh) * -200);
+    z-index: -3;
+}
+
+.Aboutout {
+    display: block !important;
+}
+
 /* Tracklist */
 
 #tracklist {
     display: inline-block;
     background: none;
     list-style-type: none;
-    padding: 5vw 15vw 10vh 15vw;
+    padding: 25vh 15vw 5vh 15vw;
     height: auto;
     width: 100%;
     text-align: center;
@@ -397,7 +441,7 @@ iframe {
 #tracklist h1 {
     display: table-cell;
     font-family: 'Barlow';
-    font-weight: 500;
+    font-weight: 600;
     vertical-align: middle;
     text-align: center;
     font-size: 1.5em;
@@ -415,8 +459,8 @@ iframe {
 }
 
 #tracklist i {
-    font-family: 'Barlow';
     display: inline-block;
+    font-family: 'Barlow';
     font-weight: 600;
     color: #fff;
     font-size: 1.2em;
@@ -437,12 +481,22 @@ iframe {
 }
 
 #tracklist sub {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     font-family: 'Barlow','ZEN KAKU GOTHIC ANTIQUE';
     font-style: normal;
     font-weight: 700;
     color: #fff;
     font-size: 0.8em;
+    flex: 1;
+    width: auto;
+}
+
+#tracklist sub:after {
+    content: "";
+    flex: 1;
+    border-bottom: 1.5px dashed #fff;
+    margin: auto 1em;
 }
 
 #tracklist sup {
@@ -452,6 +506,7 @@ iframe {
     font-weight: 200;
     color: #fff;
     font-size: 0.8em;
+    width: fit-content;
 }
 
 /* Information */
@@ -459,10 +514,9 @@ iframe {
 #info {
     background: none;
     list-style-type: none;
-    padding: 5vw 15vw 0 15vw;
+    padding: 10vh 15vw 10vh 15vw;
     height: auto;
     text-align: center;
-
     font-size: 5vmin;
 }
 
@@ -474,6 +528,7 @@ iframe {
 #info #album-logo {
     width: 35vw;
     height: auto;
+    margin-bottom: 0.5em;
 }
 
 #info li{
@@ -498,7 +553,7 @@ iframe {
     font-family: 'Josefin Sans';
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: #FFE100;
+    color: #ffe100;
     font-size: 0.4em;
     padding-top: 1.3em;
     text-align: left;
@@ -539,7 +594,7 @@ iframe {
 #info .store-button{
     display: flex;
     justify-content: space-between;
-    width: 66vw;
+    width: 70vw;
 }
 
 #info  .sitebutton {
@@ -549,7 +604,7 @@ iframe {
     font-weight: 700;
     letter-spacing: 0.01em;
     padding: 0.65em 0 0.6em 0;
-    width: calc((66vw - 36pt) / 4);
+    width: calc((70vw - 36pt) / 4);
     margin-top: 0.8vmax;
     text-align: center;
     border: 2px solid #fff;
@@ -559,8 +614,8 @@ iframe {
 }
 
 #info  .sitebutton.emptylink {
-    border: 1.5px solid #bebebe;
-    color: #bebebe;
+    border: 1.5px solid rgba(0,52,77,0.5);
+    color: rgba(0,52,77,0.5);
     pointer-events: none;
     cursor: default;
 }
@@ -580,8 +635,8 @@ iframe {
 
 #info  .sitebutton.emptylink:active,
 #info  .sitebutton.emptylink:hover {
-    color: #bebebe;
-    border-color: #bebebe;
+    color: rgba(0,52,77,0.5));
+    border-color: rgba(0,52,77,0.5);
     text-decoration: none;
     background: none;
     box-shadow: none;
@@ -595,8 +650,8 @@ iframe {
 #info  .sitebutton:hover {
     text-decoration: none;
     color: #000;
-    border-color: #FFE100;
-    background: #FFE100;
+    border-color: #ffe100;
+    background: #ffe100;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -684,7 +739,7 @@ iframe {
 }
 
 .caption-style .caption-bg {
-    background-color: #FFE100;
+    background-color: #ffe100;
     height: 25em;
     width: max(25vw, 400px);
     z-index: 5;
@@ -713,7 +768,7 @@ iframe {
     display: inline-block;
     background: none;
     list-style-type: none;
-    padding: 5vw 20vw 0 20vw;
+    padding: 10vh 15vw 0 15vw;
     min-height: 40vmin;
     height: auto;
     width: 100%;
@@ -722,25 +777,26 @@ iframe {
 }
 
 #credit title {
-    width: 60vw;
+    margin-bottom: 2vh;
+}
+
+.creditgrid {
+    display: grid;
+    width: 70vw;
+    grid-gap: 1vh 2vw;
+    grid-template-columns: repeat(5, max-content);
+    justify-items: center;
+    place-content: space-around
 }
 
 .credit-info {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: flex-start;
+    display: contents;
 }
 
 #credit .field {
+    display: inline-block;
     text-align: center;
-    flex-basis: content;
     margin: 0 1em;
-}
-
-.res {
-    content: "";
-    flex-basis: 100%;
 }
 
 #credit a {
@@ -751,12 +807,9 @@ iframe {
     font-weight: 700;
     color: #fff;
     line-height: 1.3em;
+    font-size: 1.2em;
 
     transition: all 0.2s;
-}
-
-#credit .main-composer {
-    font-size: 1.5em;
 }
 
 #credit a:after {
@@ -808,13 +861,13 @@ iframe {
     font-family: 'Josefin Sans';
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: #FFE100;
+    color: #ffe100;
     font-size: 0.1em;
     margin-top: 15em;
 }
 
 .milkyway_logo2 {
-    width: 15em;
+    width: 12em;
     margin-top: -0.5em;
     margin-bottom: -1em;
     filter: invert(2);
@@ -907,14 +960,16 @@ header {
 
 #banner {
     background-size: auto 100vh;
+    background-size: auto calc(var(--vh, 1vh) * 100);
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
 }
 
 #info  .sitebutton {
     font-size: 24pt;
     padding: 0.45em 0 0.4em 0;
-    width: calc((80vw - 30pt) / 4);
+    width: calc((70vw - 30pt) / 4);
 }
 
 #info  .sitebutton.emptylink span::before{
@@ -926,7 +981,7 @@ header {
 }
 
 #credit {
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 #credit h1 {
@@ -976,6 +1031,7 @@ header {
     background-position: center top;
     background-size: auto 100%;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
 }
 
@@ -992,6 +1048,7 @@ header {
     width: 80vw;
     left: 10vw;
     bottom: 30vh;
+    bottom: calc(var(--vh, 1vh) * 30);
 }
 
 section {
@@ -1003,6 +1060,15 @@ section {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+#sticky-background {
+    background: url(images/sticky-background-mobile.jpg) no-repeat;
+    background-size: auto 100vh ;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -100vh;
 }
 
 .video {
@@ -1021,9 +1087,9 @@ section {
 }
 
 title {
-    width: 80vw;
+    width: 70vw;
     font-size: 5vmin;
-    padding: 0.4em 0.7em;
+    padding: 0;
     margin: max(3vh, 10pt) auto max(3vh, 10pt) auto;
 }
 
@@ -1076,7 +1142,7 @@ header li {
 }
 
 header li:hover {
-    color: # !important;
+    color: #FFE100 !important;
 }
 
 header ul:first-child {
@@ -1109,7 +1175,6 @@ header a {
     padding: 1.8rem 20vw 1.8rem 20vw;
     margin: 0;
 }
-
 
 header .hypereffect {
     pointer-events: all;
@@ -1152,13 +1217,14 @@ input {
 /* About */
 
 #about {
-    margin-top: 100vh;
-    padding: 0 0;
+    background: url(images/background-about-mobile.png) no-repeat right center;
+    background-size: auto 100%;
+    padding: 20vh 0;
     min-height: auto;
 }
 
 #about h2 {
-    font-size: 3vw;
+    font-size: 3.5vw;
     width: 80vw;
     text-align: center;
 }
@@ -1171,7 +1237,7 @@ input {
 /* Tracklist */
 
 #tracklist {
-    padding: 6rem 10vw 6rem 10vw;
+    padding: 6rem 15vw 6rem 15vw
 }
 
 #tracklist li {
@@ -1183,15 +1249,16 @@ input {
 }
 
 #tracklist li p {
-    width: 70vw;
+    width: 60vw;
 }
 
 #tracklist h1 {
-    width: 15vw;
+    width: 20vw;
+    font-size: 1.3em;
 }
 
 #tracklist h2 {
-    width: 70vw;
+    width: 45vw;
     text-align: justify;
     padding-left: 5vw;
 }
@@ -1203,7 +1270,7 @@ input {
     height: auto;
     text-align: center;
 
-    font-size: max(15pt,6vw);
+    font-size: max(20pt,9vw);
 }
 
 #info #container {
@@ -1235,12 +1302,10 @@ input {
 }
 
 #info h1 {
+    font-size: 0.3em;
     width: 80vw;
     text-align: center;
-}
-
-#info h1:first-child {
-    padding-top: 15pt;
+    padding-top: 1em;
 }
 
 #info h2, #info h3{
@@ -1273,7 +1338,6 @@ input {
 #info  .sitebutton.emptylink span::before{
     font-size: max(8pt,4.5vw) !important;
 }
-
 
 .caption-style {
     width: 80vw;
@@ -1309,12 +1373,22 @@ input {
     font-size: 4vw;
 }
 
-.credit-info {
-    margin-top: 0;
+#credit title {
+    width: 70vw;
 }
 
+.creditgrid {
+    width: 80vw;
+    grid-gap: 0 0;
+    grid-template-columns: repeat(2, max-content);
+}
+
+#credit .field:last-child {
+    grid-column: span 2;
+ }
+
+
 #credit .field {
-    text-align: center;
     min-width: auto;
 }
 
@@ -1347,14 +1421,14 @@ input {
     line-height: 1.5em;
 }
 
+header {
+    display: none;
+}
+
 }
 
 
 @media screen and (min-width: 481px) and (max-width: 1000px) {
-
-nav {
-    display: none;
-}
 
 #banner {
     background-position: center bottom;
