@@ -172,15 +172,16 @@ header {
     font-size: 1.5vh;
     line-height: 8em;
     z-index: 10000;
-    background: none;
+    background-color: none;
 
     user-select: none;
     transition: 0.5s linear;
     transition-property: height, line-height;
+    transition:  0.5s ease;
 }
 
 .outbanner-header {
-    background: linear-gradient(to bottom, #fff, rgba(0,0,0,0));
+    background-color: linear-gradient(to bottom, #fff, rgba(0,0,0,0));
     height: 10vh;
     line-height: 5em;
 }
@@ -278,10 +279,20 @@ input {
     position: absolute;
     width: 38em;
     height: auto;
-    top: 50%;
-    right: 3.5rem;
+    top: 47%;
+    right: calc(3.5rem + 2.7vh);
     transform: translateY(-50%);
 }
+
+#milky-info {
+    display: block;
+    position: absolute;
+    width: 15em;
+    height: auto;
+    bottom: calc(3.5rem + 2.7vh);
+    right: calc(3.5rem + 2.7vh);
+}
+
 
 /* About */
 
@@ -289,7 +300,7 @@ input {
     display: inline-block;
     background: linear-gradient(to bottom, #fff, rgba(256,256,256,0));
     list-style-type: none;
-    padding: 5vw 15vw 0 15vw;
+    padding: 25vh 15vw 0 15vw;
     width: 100%;
     text-align: center;
     margin-top: 100vh;
@@ -313,6 +324,7 @@ input {
     display: inline-block;
     z-index: 1000 !important;
     width: 25vw;
+    margin-bottom: max(1.8vw,4vh);
 }
 
 #about h2 {
@@ -328,6 +340,7 @@ input {
     letter-spacing: 0.05em;
     word-break: keep-all;
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 .video {
@@ -356,6 +369,12 @@ iframe {
     height: auto;
     width: 100%;
     text-align: center;
+
+    -webkit-touch-callout: text;
+    user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    -webkit-user-select: text;
 }
 
 .tracks {
@@ -378,10 +397,10 @@ iframe {
 #tracklist h1 {
     display: table-cell;
     font-family: 'Barlow';
-    font-weight: 700;
+    font-weight: 500;
     vertical-align: middle;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.5em;
     color: #fff;
     width: 6vw;
 }
@@ -404,10 +423,11 @@ iframe {
 }
 
 #tracklist em {
+    display: inline-block;
     font-family: 'Barlow';
     font-weight: 500;
     font-size: 0.8em;
-    line-height: 0.4em;
+    transform: translateY(-0.08em);
 }
 
 #tracklist li p {
@@ -427,9 +447,9 @@ iframe {
 
 #tracklist sup {
     display: inline-block;
-    font-family: 'Barlow';
+    font-family: 'Josefin San';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200;
     color: #fff;
     font-size: 0.8em;
 }
@@ -475,8 +495,9 @@ iframe {
 }
 
 #info h1 {
-    font-family: 'Barlow';
-    font-weight: 600;
+    font-family: 'Josefin Sans';
+    font-weight: 700;
+    letter-spacing: 0.1em;
     color: #FFE100;
     font-size: 0.4em;
     padding-top: 1.3em;
@@ -692,12 +713,16 @@ iframe {
     display: inline-block;
     background: none;
     list-style-type: none;
-    padding: 5vw 15vw 0 15vw;
+    padding: 5vw 20vw 0 20vw;
     min-height: 40vmin;
     height: auto;
     width: 100%;
     text-align: center;
     font-size: 15pt;
+}
+
+#credit title {
+    width: 60vw;
 }
 
 .credit-info {
@@ -733,7 +758,6 @@ iframe {
 #credit .main-composer {
     font-size: 1.5em;
 }
-
 
 #credit a:after {
     content: "";
@@ -781,8 +805,9 @@ iframe {
 }
 
 #credit h1 {
-    font-family: 'Barlow';
-    font-weight: 600;
+    font-family: 'Josefin Sans';
+    font-weight: 700;
+    letter-spacing: 0.1em;
     color: #FFE100;
     font-size: 0.1em;
     margin-top: 15em;
@@ -791,6 +816,7 @@ iframe {
 .milkyway_logo2 {
     width: 15em;
     margin-top: -0.5em;
+    margin-bottom: -1em;
     filter: invert(2);
 }
 
@@ -822,8 +848,9 @@ iframe {
 }
 
 #footer .copyright li h1{
-    font-family: 'Barlow';
+    font-family: 'Josefin Sans';
     font-weight: 700;
+    letter-spacing: 0.1em;
     color: #fff;
     font-size: 1.2em;
 }
